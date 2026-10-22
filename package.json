@@ -1,0 +1,14 @@
+{
+  "name": "galerikita",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "22.x" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node --env-file-if-exists=.env.local server.mjs",
+    "start": "node --env-file-if-exists=.env.local server.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "check": "node --check src/app.js && node --check api/properties.js && npm test"
+  }
+}

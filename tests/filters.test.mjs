@@ -1,0 +1,13 @@
+import {readFile} from 'node:fs/promises';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const context=vm.createContext({});vm.runInContext(await readFile(new URL('../src/utils.js',import.meta.url),'utf8'),context);
+const {measurement,matchesSpecs}=context;
+for(const [input,expected] of [['120 m²',120],['29x11 m',319],['1.044 m² (43x32m)',1044],['120,5 m²',120.5],['120.5 m²',120.5],['',0],['Belum tersedia',0]]) assert.equal(measurement(input),expected,input);
+const filters={building:100,land:120,beds:3,baths:2};
+assert.equal(matchesSpecs({area:'100 m²',landArea:'120 m²',beds:'3',baths:'2'},filters),true,'inclusive minimums and string values');
+assert.equal(matchesSpecs({area:'99 m²',landArea:'120 m²',beds:3,baths:2},filters),false);
+assert.equal(matchesSpecs({buildingArea:'130 m²',area:'70 m²',landArea:'12x10 m',beds:4,baths:3},filters),true,'prefer buildingArea over legacy area');
+assert.equal(matchesSpecs({landArea:'120 m²',beds:3,baths:2},filters),false,'unknown building area excluded when filtering');
+assert.equal(matchesSpecs({}, {building:0,land:0,beds:0,baths:0}),true,'unfiltered includes missing specs');
+console.log('12 checks passed: numeric measurements, combined minimum filters, missing specifications.');

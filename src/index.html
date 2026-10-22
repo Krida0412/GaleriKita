@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#e60019">
+  <meta name="description" content="Jelajahi rumah, kost, properti komersial, dan tanah di Purwokerto. Temukan properti pilihan sesuai kebutuhan Anda.">
+  <title>Properti Unggulan — GaleriKita</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23e60019'/%3E%3Cpath d='M8 19L20 9l12 10v13H8z' fill='white'/%3E%3Cpath d='M17 24h6v8h-6z' fill='%23e60019'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/refinements.css">
+  <script src="/utils.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="/" aria-label="GaleriKita beranda"><span class="brand-icon" data-icon="home"></span><span>Galeri<span class="brand-accent">Kita</span><small>PROPERTI PILIHAN, HIDUP IMPIAN</small></span></a><nav aria-label="Navigasi utama"><a class="nav-active" href="#properti">Jelajahi Properti</a><button class="saved-nav" id="saved-toggle"><span data-icon="heart"></span><span>Tersimpan</span><b id="saved-count">0</b></button></nav></header>
+  <main id="properti">
+    <section class="intro" aria-labelledby="page-title"><span class="eyebrow">TEMUKAN TEMPAT UNTUK CERITA BARU</span><h1 id="page-title">Properti Unggulan</h1><p>GaleriKita</p><span class="red-line"></span></section>
+    <section class="controls" aria-label="Cari dan filter properti"><div class="search-wrap"><span data-icon="search"></span><input id="search" type="search" placeholder="Cari properti berdasarkan nama atau lokasi..." aria-label="Cari properti berdasarkan nama atau lokasi"><kbd>/</kbd></div><div class="categories" id="categories" aria-label="Kategori properti"></div></section>
+    <div class="filter-toolbar"><button id="filter-toggle" type="button" aria-expanded="false" aria-controls="advanced-filters"><span data-icon="filter"></span>Filter<span id="filter-badge" hidden></span><span class="filter-chevron" aria-hidden="true">⌄</span></button></div><section id="advanced-filters" class="advanced-filters" aria-label="Filter spesifikasi" hidden><label>Luas bangunan minimal<div class="number-field"><input id="min-building" type="number" min="0" step="1" placeholder="Semua" inputmode="numeric"><span>m²</span></div></label><label>Luas tanah minimal<div class="number-field"><input id="min-land" type="number" min="0" step="1" placeholder="Semua" inputmode="numeric"><span>m²</span></div></label><label>Kamar tidur minimal<select id="min-beds"><option value="0">Semua</option><option value="1">1+ kamar</option><option value="2">2+ kamar</option><option value="3">3+ kamar</option><option value="4">4+ kamar</option><option value="5">5+ kamar</option><option value="10">10+ kamar</option></select></label><label>Kamar mandi minimal<select id="min-baths"><option value="0">Semua</option><option value="1">1+ kamar</option><option value="2">2+ kamar</option><option value="3">3+ kamar</option><option value="4">4+ kamar</option><option value="5">5+ kamar</option></select></label><button id="clear-filters" type="button">Reset filter</button></section>
+    <section class="listing" aria-label="Daftar properti"><div class="results-bar"><div><p id="result-count" role="status" aria-live="polite">Sedang memuat properti pilihan…</p><span id="page-info">Menghubungkan ke GaleriKita</span></div><label class="sort-label"><span>Urutkan:</span><select id="sort" aria-label="Urutkan properti"><option value="newest">Terbaru</option><option value="price-low">Harga terendah</option><option value="price-high">Harga tertinggi</option></select></label></div><div id="property-grid" class="property-grid" aria-busy="true"></div><div id="empty" class="empty" hidden></div><nav id="pagination" class="pagination" aria-label="Halaman properti"></nav></section>
+    <section class="bottom-note"><span class="note-icon" data-icon="home"></span><div><h2>Ruang yang tepat untuk langkah berikutnya.</h2><p>Jelajahi pilihan properti di Purwokerto dan sekitarnya.</p></div><a href="#page-title">Kembali ke atas <span data-icon="arrow-up"></span></a></section>
+  </main>
+  <footer><a class="footer-brand" href="/">Galeri<span>Kita</span></a><p>Harga dan ketersediaan dapat berubah. Konfirmasikan kepada agen.</p><span>Purwokerto, Jawa Tengah</span></footer>
+  <section id="detail-page" hidden><div class="detail-topbar"><button id="back-to-list">← Kembali ke Daftar Properti</button></div><main id="detail-content" class="detail-page-content"></main></section>
+  <dialog id="photo-viewer" class="photo-viewer" aria-label="Galeri foto layar penuh"><div class="viewer-top"><span id="photo-counter" aria-live="polite"></span><button id="close-viewer" aria-label="Tutup galeri">✕</button></div><button id="previous-photo" class="viewer-arrow previous" aria-label="Foto sebelumnya">‹</button><div id="photo-stage"><img id="full-photo" alt=""></div><button id="next-photo" class="viewer-arrow next" aria-label="Foto berikutnya">›</button><p class="viewer-hint">Geser foto atau gunakan tombol panah</p><div id="viewer-thumbs"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
